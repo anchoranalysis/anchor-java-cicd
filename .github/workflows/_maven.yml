@@ -1,0 +1,56 @@
+# 
+# This workflow will execute a maven command (or two sequential commands)
+#
+name: Maven command
+
+on:
+  workflow_call:
+    inputs:
+        maven-command:
+          required: true
+          type: string
+        maven-command-extra:
+            required: false
+            type: string              
+    secrets:
+      SONAR_TOKEN:
+        required: true        
+
+jobs:
+    
+  javadoc:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 8
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk8
+        restore-keys: ${{ runner.os }}-m2
+    - name: Create settings.xml for Maven
+      uses: s4u/maven-settings-action@v2.2.0
+      with:
+        servers: |
+            [{
+                "id": "path-pattern-finder",
+                "username": "$GITHUB_ACTOR",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+            }]    
+    - name: Maven command
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn --batch-mode --update-snapshots ${{ inputs.maven-command }}
+    - name: Additional maven command
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn --batch-mode ${{ inputs.maven-command-extra }}
+      if: ${{ !inputs.maven-command-extra }}

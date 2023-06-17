@@ -16,37 +16,11 @@ on:
 jobs:
     
   javadoc:
+    uses: ./.github/workflows/_maven.yml
+    with:
+      maven-command: clean install
+      maven-command-extra: javadoc:javadoc
+      os: ubuntu-latest
+      java-version: 8
+    secrets: inherit    
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 8
-    - name: Cache Maven packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk8
-        restore-keys: ${{ runner.os }}-m2
-    - name: Create settings.xml for Maven
-      uses: s4u/maven-settings-action@v2.2.0
-      with:
-        servers: |
-            [{
-                "id": "path-pattern-finder",
-                "username": "$GITHUB_ACTOR",
-                "password": "${{ secrets.GITHUB_TOKEN }}"
-            }]    
-    - name: Compile before running Javadoc
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn --batch-mode --update-snapshots clean install            
-    - name: Generate Javadoc
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn --batch-mode ${{ inputs.maven-command }}
