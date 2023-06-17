@@ -21,7 +21,8 @@ jobs:
   test:
     uses: ./.github/workflows/_maven.yml
     with:
-      maven-command: verify
+      maven-command: -Dmaven.test.failure.ignore=true verify
       os: ${{ inputs.os }}
       java-version: ${{ inputs.java-version }}
+      publish-test-report: true
     secrets: inherit    

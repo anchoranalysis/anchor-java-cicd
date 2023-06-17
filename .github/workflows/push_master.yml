@@ -22,7 +22,7 @@ jobs:
       uses: ./.github/workflows/_clean_maven.yml
       with:
         maven-command: javadoc:jar source:jar deploy
-      secrets: inherit    
+      secrets: inherit
     
       
   sonarcloud:
