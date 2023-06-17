@@ -2,8 +2,7 @@
 # Push request triggered by a push to dev branch.
 #
 # This workflow will:
-#  - perform linting/formatting checks (on Python 3.11 only)
-#  - run unit tests (on Python 3.11 only)
+#  - run unit tests
 #  - submit project state to Sonarccloud.submit to Sonarccloud.
 #
 #
@@ -12,10 +11,6 @@ name: python_ci_push_dev
 
 on:
   workflow_call:
-    inputs:
-      library-name:
-        required: true
-        type: string
     secrets:
       SONAR_TOKEN:
         required: true        
