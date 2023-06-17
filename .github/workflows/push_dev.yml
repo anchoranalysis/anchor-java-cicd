@@ -32,7 +32,7 @@ jobs:
     secrets: inherit
 
   javadoc:
-    uses: ./.github/workflows/_javadoc.yml
+    uses: ./.github/workflows/_clean_maven.yml
     with:
       maven-command: javadoc:javadoc
     secrets: inherit    

@@ -1,7 +1,7 @@
 # 
-# This workflow will execute a Javadoc-related command using Maven
+# This workflow will clean the existing contents and then execute a maven command
 #
-name: Javadoc
+name: Clean and maven command
 
 on:
   workflow_call:
@@ -15,12 +15,11 @@ on:
 
 jobs:
     
-  javadoc:
+  clean_and_build:
     uses: ./.github/workflows/_maven.yml
     with:
       maven-command: clean install
-      maven-command-extra: javadoc:javadoc
+      maven-command-extra: ${{ inputs.maven-command }}
       os: ubuntu-latest
       java-version: 8
     secrets: inherit    
-

@@ -18,8 +18,8 @@ on:
 
 jobs:
 
-  javadoc_deploy:
-      uses: ./.github/workflows/_javadoc.yml
+  deploy_and_javadoc:
+      uses: ./.github/workflows/_clean_maven.yml
       with:
         maven-command: javadoc:jar source:jar deploy
       secrets: inherit    
