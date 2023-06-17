@@ -18,7 +18,7 @@ on:
 
 jobs:
 
-  test-${{ inputs.os }}-jdk${{ inputs.java-version }}:
+  test:
 
     runs-on: ${{ inputs.os }}
 
