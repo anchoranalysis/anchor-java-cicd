@@ -61,11 +61,9 @@ jobs:
         
   sonarcloud:
     uses: ./.github/workflows/_sonarcloud.yml
-    with:
-      runner-os: ${{ runner.os }}
     secrets: inherit
 
-    
+
   javadoc:
 
     runs-on: ubuntu-latest
