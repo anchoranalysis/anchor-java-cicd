@@ -6,12 +6,25 @@ name: Maven command
 on:
   workflow_call:
     inputs:
+        # The first maven command to execute
         maven-command:
           required: true
           type: string
+
+        # The second maven command to execute (ignored if empty)
         maven-command-extra:
             required: false
-            type: string              
+            type: string
+
+        # What OS to run maven on
+        os:
+          required: true
+          type: string
+
+        # JDK version
+        java-version:
+          required: true
+          type: string                
     secrets:
       SONAR_TOKEN:
         required: true        
