@@ -21,7 +21,7 @@ jobs:
   deploy_and_javadoc:
       uses: ./.github/workflows/_clean_maven.yml
       with:
-        maven-command: javadoc:jar source:jar deploy
+        maven-command: javadoc:jar source:jar verify
       secrets: inherit
     
       
