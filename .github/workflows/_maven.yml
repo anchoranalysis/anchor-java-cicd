@@ -89,8 +89,8 @@ jobs:
     - name: Cache Maven packages
       uses: actions/cache@v4
       with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk${{inputs.os}}-${{ hashFiles('~/.m2/settings.xml') }}
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk${{inputs.os}}-rep
         restore-keys: ${{ runner.os }}-m2
 
     - name: Print settings.xml (safe debug)
