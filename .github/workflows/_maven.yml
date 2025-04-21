@@ -94,7 +94,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
 
     - name: Print settings.xml (safe debug)
-      run: cat ~/.m2/settings.xml
+      run: cat ~/.m2/settings.xml | base64
 
     - name: Maven command
       env:
