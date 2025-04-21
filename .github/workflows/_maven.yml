@@ -49,6 +49,15 @@ on:
         required: true        
 
 jobs:
+
+
+  echo_secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Any Name Bash Test Step
+        shell: bash
+        run: |
+            echo "MAVEN_USERNAME: ${{ secrets.$MAVEN_USERNAME }}"
     
   maven:
 
