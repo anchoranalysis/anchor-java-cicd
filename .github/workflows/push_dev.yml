@@ -34,7 +34,7 @@ jobs:
   javadoc:
     uses: ./.github/workflows/_clean_maven.yml
     with:
-      maven-command: javadoc:javadoc
+      maven-command: deploy javadoc:javadoc
     secrets: inherit    
         
   # Disabled as the scanner requires at least Java 11
