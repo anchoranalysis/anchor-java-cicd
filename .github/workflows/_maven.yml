@@ -93,6 +93,9 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk${{inputs.os}}
         restore-keys: ${{ runner.os }}-m2
 
+    - name: Print settings.xml (safe debug)
+      run: cat ~/.m2/settings.xml
+
     - name: Maven command
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
