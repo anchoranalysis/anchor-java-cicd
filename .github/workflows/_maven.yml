@@ -57,7 +57,10 @@ jobs:
       - name: Any Name Bash Test Step
         shell: bash
         run: |
-            echo "MAVEN_USERNAME: ${{ secrets.$MAVEN_USERNAME }}"
+            echo "MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}"
+         env:
+            
+          
     
   maven:
 
