@@ -54,13 +54,14 @@ jobs:
 
     runs-on: ${{inputs.os}}
 
+    env:
+      MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+      MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK ${{inputs.java-version}}
-      env:
-        MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-        GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       uses: actions/setup-java@v4
       with:
         java-version: ${{inputs.java-version}}
