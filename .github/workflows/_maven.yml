@@ -5,15 +5,6 @@ name: Maven command
 
 on:
   workflow_call:
-    secrets:
-      MAVEN_USERNAME:
-        required: true 
-      MAVEN_PASSWORD:
-        required: true        
-      GPG_SIGNING_KEY:
-        required: true 
-      GPG_PASSPHRASE:
-        required: true      
     inputs:
         # The first maven command to execute
         maven-command:
