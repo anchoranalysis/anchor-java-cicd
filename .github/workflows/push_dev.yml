@@ -13,8 +13,15 @@ on:
   workflow_call:
     secrets:
       SONAR_TOKEN:
-        required: true        
-
+        required: true 
+       MAVEN_USERNAME:
+         required: true 
+       MAVEN_PASSWORD:
+         required: true        
+       GPG_SIGNING_KEY:
+         required: true 
+       GPG_PASSPHRASE:
+         required: true
 
 jobs:
   test:
