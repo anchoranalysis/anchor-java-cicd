@@ -90,7 +90,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk${{inputs.os}}-hashFiles('**/settings.xml')
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-jdk${{inputs.os}}-${{ hashFiles('**/settings.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
     - name: Print settings.xml (safe debug)
