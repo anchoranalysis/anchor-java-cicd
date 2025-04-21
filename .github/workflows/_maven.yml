@@ -58,8 +58,6 @@ jobs:
         shell: bash
         run: |
             echo "MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}"
-         env:
-            
           
     
   maven:
