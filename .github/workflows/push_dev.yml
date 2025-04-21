@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        java: [17,21]
+        java: [21,24]
 
     with:
       os: ${{ matrix.os }}
@@ -38,6 +38,6 @@ jobs:
     secrets: inherit    
         
   # Disabled as the scanner requires at least Java 11
-  #sonarcloud:
-   # uses: ./.github/workflows/_sonarcloud.yml
-   # secrets: inherit    
+  sonarcloud:
+   uses: ./.github/workflows/_sonarcloud.yml
+   secrets: inherit    
