@@ -40,6 +40,7 @@ jobs:
     with:
       os: ${{ matrix.os }}
       java-version: ${{ matrix.java }}
+      upload-artifact: ${{ inputs.upload-artifact }}
 
     secrets: inherit
 
