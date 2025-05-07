@@ -9,6 +9,11 @@ on:
         maven-command:
           required: true
           type: string
+    inputs:
+        # Whether to upload artifiacts from the 
+        upload-artifact:
+          required: false
+          type: string            
         
     secrets:
       SONAR_TOKEN:
@@ -29,6 +34,7 @@ jobs:
     with:
       maven-command: clean install
       maven-command-extra: ${{ inputs.maven-command }}
+      upload-artifact: ${{ inputs.upload-artifact }}
       os: ubuntu-latest
       java-version: 21
     secrets: inherit    
