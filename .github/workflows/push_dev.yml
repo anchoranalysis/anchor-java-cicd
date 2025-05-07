@@ -47,7 +47,7 @@ jobs:
   javadoc:
     uses: ./.github/workflows/_clean_maven.yml
     with:
-      maven-command: deploy javadoc:javadoc
+      maven-command: javadoc:javadoc
     secrets: inherit    
         
   sonarcloud:
