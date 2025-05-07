@@ -112,7 +112,7 @@ jobs:
       with: 
           name: ${{ inputs.upload-artifact }}
           path: ${{ inputs.upload-artifact }}-${{inputs.os}}-${{inputs.java-version}}
-      if: ${{ inputs.upload-artifact }}
+      if: ${{ inputs.upload-artifact }} != ""
       
     - name: Publish Test Report
       uses: scacap/action-surefire-report@v1
