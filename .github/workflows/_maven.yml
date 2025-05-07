@@ -31,6 +31,11 @@ on:
           required: false
           type: boolean
 
+        # Whether to upload artifiacts from the 
+        upload-artifact:
+          required: false
+          type: string
+
         # Whether to publish a test report
         publish-test-report:
           required: false
@@ -99,6 +104,15 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: mvn --batch-mode ${{ inputs.maven-command-extra }}
       if: ${{ inputs.maven-command-extra }}
+      
+    - name: Upload artifact
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: actions/upload-artifact@v4
+      with: 
+          name: maven-artifacts
+          path: ${{ inputs.upload-artifact }}
+      if: ${{ inputs.upload-artifact }}
       
     - name: Publish Test Report
       uses: scacap/action-surefire-report@v1

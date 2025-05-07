@@ -44,7 +44,6 @@ jobs:
       maven-command: deploy javadoc:javadoc
     secrets: inherit    
         
-  # Disabled as the scanner requires at least Java 11
   sonarcloud:
    uses: ./.github/workflows/_sonarcloud.yml
    secrets: inherit    
