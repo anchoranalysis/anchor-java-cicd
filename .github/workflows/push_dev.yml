@@ -11,6 +11,11 @@ name: python_ci_push_dev
 
 on:
   workflow_call:
+    inputs:
+        # Whether to upload artifiacts from the 
+        upload-artifact:
+          required: false
+          type: string  
     secrets:
       SONAR_TOKEN:
         required: true 
