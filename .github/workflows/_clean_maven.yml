@@ -9,7 +9,6 @@ on:
         maven-command:
           required: true
           type: string
-    inputs:
         # Whether to upload artifiacts from the 
         upload-artifact:
           required: false
