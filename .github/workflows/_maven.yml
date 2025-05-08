@@ -110,8 +110,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       uses: actions/upload-artifact@v4
       with: 
-          name: ${{ inputs.upload-artifact }}
-          path: ${{ inputs.upload-artifact }}-${{inputs.os}}-${{inputs.java-version}}
+          name: ${{ inputs.upload-artifact }}-${{inputs.os}}-${{inputs.java-version}}
+          path: ${{ inputs.upload-artifact }}
       if: ${{ inputs.upload-artifact }} != ""
       
     - name: Publish Test Report
